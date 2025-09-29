@@ -874,7 +874,7 @@ export default function LandingPage() {
                   </div>
                   <div className="ml-3 text-sm">
                     <label htmlFor="privacy" className="font-medium text-gray-700">
-                      <Link href="/privacy-policy" className="text-[#6CB2F7] hover:underline">
+                      <Link href="/privacy-policy" className="text-[#6CB2F7] hover:underline" target="_blank" rel="noopener noreferrer">
                         プライバシーポリシー
                       </Link>
                       に同意します <span className="text-red-500">*</span>
