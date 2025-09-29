@@ -40,6 +40,7 @@ const heroImages = [
 export default function LandingPage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -65,11 +66,46 @@ export default function LandingPage() {
     setMobileMenuOpen(false)
   }
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setFormStatus('sending')
+
+    const formData = new FormData(e.currentTarget)
+    const data = {
+      name: formData.get('name'),
+      phone: formData.get('phone'),
+      email: formData.get('email'),
+      inquiryType: formData.get('inquiry-type'),
+      message: formData.get('message'),
+    }
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      if (response.ok) {
+        setFormStatus('success')
+        // フォームをリセット
+        e.currentTarget.reset()
+      } else {
+        setFormStatus('error')
+      }
+    } catch (error) {
+      console.error('送信エラー:', error)
+      setFormStatus('error')
+    }
+  }
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur">
-        <div className="container flex h-16 items-center justify-between px-4 md:px-6">
+        <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
           <div className="flex items-center gap-2">
             <Heart className="h-6 w-6 text-[#B8EACE]" />
             <span className="text-xl font-bold">楠根の里</span>
@@ -115,7 +151,7 @@ export default function LandingPage() {
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <div className="lg:hidden border-t bg-white/95 backdrop-blur">
-            <nav className="container px-4 py-4 space-y-4">
+            <nav className="container mx-auto px-4 py-4 space-y-4">
               <Link
                 href="#about"
                 className="block text-base font-medium hover:text-[#6CB2F7] transition-colors py-2"
@@ -229,7 +265,7 @@ export default function LandingPage() {
 
           {/* Content Overlay */}
           <div className="relative z-10 h-full flex items-center">
-            <div className="container px-4 md:px-6">
+            <div className="container mx-auto px-4 md:px-6">
               <div className="max-w-4xl mx-auto text-center text-white space-y-6">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-tight">
                   住み慣れた家のような安心感
@@ -277,7 +313,7 @@ export default function LandingPage() {
 
         {/* About Section */}
         <section id="about" className="w-full py-12 md:py-24 bg-white">
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">楠根の里について</h2>
@@ -319,7 +355,7 @@ export default function LandingPage() {
 
         {/* Medical Services Section */}
         <section id="medical" className="w-full py-12 md:py-24 bg-[#F0F9FF]">
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">充実の医療サポート</h2>
@@ -440,7 +476,7 @@ export default function LandingPage() {
 
         {/* Room Types & Pricing */}
         <section id="rooms" className="w-full py-12 md:py-24 bg-white">
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">お部屋タイプと料金</h2>
@@ -545,7 +581,7 @@ export default function LandingPage() {
 
         {/* Admission Flow */}
         <section className="w-full py-12 md:py-24 bg-[#F9FEFF]">
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">入居までの流れ</h2>
@@ -615,7 +651,7 @@ export default function LandingPage() {
 
         {/* FAQ */}
         <section id="faq" className="w-full py-12 md:py-24 bg-white">
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">よくあるご質問</h2>
@@ -659,7 +695,7 @@ export default function LandingPage() {
 
         {/* Access */}
         <section id="access" className="w-full py-12 md:py-24 bg-[#F9FEFF]">
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">アクセス</h2>
@@ -760,7 +796,7 @@ export default function LandingPage() {
 
         {/* Contact Form */}
         <section id="contact" className="w-full py-12 md:py-24 bg-white">
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">お問い合わせ</h2>
@@ -770,7 +806,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="mx-auto max-w-3xl py-12">
-              <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" className="space-y-8">
+              <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-base font-medium">
@@ -845,11 +881,26 @@ export default function LandingPage() {
                     </label>
                   </div>
                 </div>
+                
+                {/* ステータス表示 */}
+                {formStatus === 'success' && (
+                  <div className="p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+                    お問い合わせありがとうございます。内容を確認次第、担当者よりご連絡いたします。
+                  </div>
+                )}
+                
+                {formStatus === 'error' && (
+                  <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+                    送信に失敗しました。もう一度お試しください。問題が続く場合は、お電話でお問い合わせください。
+                  </div>
+                )}
+                
                 <Button
                   type="submit"
-                  className="w-full bg-[#6CB2F7] hover:bg-[#5A9FE4] text-white text-lg h-14 rounded-xl"
+                  disabled={formStatus === 'sending'}
+                  className="w-full bg-[#6CB2F7] hover:bg-[#5A9FE4] text-white text-lg h-14 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  送信する
+                  {formStatus === 'sending' ? '送信中...' : '送信する'}
                 </Button>
               </form>
             </div>
@@ -858,7 +909,7 @@ export default function LandingPage() {
       </main>
 
       <footer className="w-full border-t bg-white py-6 md:py-12">
-        <div className="container px-4 md:px-6">
+            <div className="container mx-auto px-4 md:px-6">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             <div className="space-y-4">
               <div className="flex items-center gap-2">
