@@ -704,90 +704,111 @@ export default function LandingPage() {
                 </p>
               </div>
             </div>
-            <div className="mx-auto max-w-5xl py-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-              <div className="w-full h-[400px] rounded-xl overflow-hidden">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3278.8234567890123!2d135.6234567890123!3d34.76543210987654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e0e0e0e0e0e0%3A0x0!2z44CSNTcyLTA4MTEg5aSn6Ziq5bqc5a-d5bGL5bed5biC5qW95qC55Y2X55S6MjQtMjI!5e0!3m2!1sja!2sjp!4v1640995200000!5m2!1sja!2sjp"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="楠根の里の地図"
-                ></iframe>
-              </div>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <MapPin className="h-6 w-6 text-[#6CB2F7] mt-1" />
-                  <div>
+            <div className="mx-auto max-w-4xl py-12">
+              <div className="space-y-8 text-center">
+                <div className="flex flex-col items-center gap-4">
+                  <div className="flex items-center gap-3">
+                    <MapPin className="h-6 w-6 text-[#6CB2F7]" />
                     <h3 className="text-xl font-bold">住所</h3>
-                    <p className="text-gray-600">〒572-0811 大阪府寝屋川市楠根南町24番22号</p>
                   </div>
+                  <p className="text-gray-600">〒572-0811 大阪府寝屋川市楠根南町24番22号</p>
                 </div>
-                <div className="flex items-start gap-4">
-                  <Phone className="h-6 w-6 text-[#6CB2F7] mt-1" />
-                  <div>
+                
+                <div className="flex flex-col items-center gap-4">
+                  <div className="flex items-center gap-3">
+                    <Phone className="h-6 w-6 text-[#6CB2F7]" />
                     <h3 className="text-xl font-bold">電話番号</h3>
-                    <p className="text-gray-600">072-880-1165（受付時間：9:00〜18:00）</p>
                   </div>
+                  <p className="text-gray-600">072-880-1165（受付時間：9:00〜18:00）</p>
                 </div>
-                <div className="flex items-start gap-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-6 w-6 text-[#6CB2F7] mt-1"
-                  >
-                    <path d="M9 17h6" />
-                    <path d="M11 8v5h2" />
-                    <circle cx="12" cy="12" r="10" />
-                  </svg>
-                  <div>
+                
+                <div className="flex flex-col items-center gap-4">
+                  <div className="flex items-center gap-3">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="h-6 w-6 text-[#6CB2F7]"
+                    >
+                      <path d="M9 17h6" />
+                      <path d="M11 8v5h2" />
+                      <circle cx="12" cy="12" r="10" />
+                    </svg>
                     <h3 className="text-xl font-bold">アクセス方法</h3>
-                    <ul className="text-gray-600 space-y-2 list-disc list-inside">
-                      <li>京阪本線「寝屋川市駅」よりバスで15分</li>
-                      <li>JR学研都市線「寝屋川公園駅」より徒歩20分</li>
-                      <li>阪急京都線「枚方市駅」よりバスで20分</li>
-                    </ul>
+                  </div>
+                  <div className="text-gray-600 space-y-4 max-w-2xl">
+                    <div>
+                      <h4 className="font-semibold text-gray-800 mb-2">電車でお越しの場合</h4>
+                      <p>京阪本線 寝屋川市駅　駅前バス停33番・34番・35番乗り口から「楠根南」で下車。</p>
+                      <p>楠根南バス停から徒歩5分</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800 mb-2">車でお越しの場合</h4>
+                      <p>国道170号線・楠根交差点を西方向へ。一つ目の信号を左折して、約50m先</p>
+                    </div>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-6 w-6 text-[#6CB2F7] mt-1"
+                
+                <div className="mt-6">
+                  <a
+                    href="https://maps.google.com/maps?q=572-0811+大阪府寝屋川市楠根南町24番22号"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 bg-[#6CB2F7] hover:bg-[#5A9FE4] text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-md hover:shadow-lg"
                   >
-                    <rect x="2" y="4" width="20" height="16" rx="2" />
-                    <path d="M6 8h.01" />
-                    <path d="M18 8h.01" />
-                    <path d="M10 8h4" />
-                    <path d="M6 12h.01" />
-                    <path d="M18 12h.01" />
-                    <path d="M10 12h4" />
-                    <path d="M6 16h.01" />
-                    <path d="M18 16h.01" />
-                    <path d="M10 16h4" />
-                  </svg>
-                  <div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    Googleマップで場所を確認
+                  </a>
+                </div>
+                <div className="flex flex-col items-center gap-4">
+                  <div className="flex items-center gap-3">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="h-6 w-6 text-[#6CB2F7]"
+                    >
+                      <rect x="2" y="4" width="20" height="16" rx="2" />
+                      <path d="M6 8h.01" />
+                      <path d="M18 8h.01" />
+                      <path d="M10 8h4" />
+                      <path d="M6 12h.01" />
+                      <path d="M18 12h.01" />
+                      <path d="M10 12h4" />
+                      <path d="M6 16h.01" />
+                      <path d="M18 16h.01" />
+                      <path d="M10 16h4" />
+                    </svg>
                     <h3 className="text-xl font-bold">駐車場</h3>
-                    <p className="text-gray-600">
-                      施設内に来客用駐車場5台分をご用意しています。見学の際は事前にご連絡ください。
-                    </p>
                   </div>
+                  <p className="text-gray-600">
+                    施設内に来客用駐車場5台分をご用意しています。見学の際は事前にご連絡ください。
+                  </p>
                 </div>
               </div>
             </div>
