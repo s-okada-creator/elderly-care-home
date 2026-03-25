@@ -527,29 +527,32 @@ export default function LandingPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-3">
                         <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
-                          <span className="font-medium">月額利用料</span>
-                          <span className="font-bold">42,000円</span>
+                          <span className="font-medium">家賃</span>
+                          <span className="font-bold">48,000円</span>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
-                          <span className="font-medium">食費</span>
-                          <span className="font-bold">45,000円</span>
+                          <div>
+                            <span className="font-medium">食費</span>
+                            <span className="block text-xs text-gray-500">※日割り計算</span>
+                          </div>
+                          <span className="font-bold">51,000円</span>
                         </div>
                       </div>
                       <div className="space-y-3">
                         <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
-                          <span className="font-medium">水道光熱費</span>
-                          <span className="font-bold">25,000円</span>
+                          <span className="font-medium">光熱費</span>
+                          <span className="font-bold">31,000円</span>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
-                          <span className="font-medium">日常用途品</span>
-                          <span className="font-bold">8,000円</span>
+                          <span className="font-medium">生活費</span>
+                          <span className="font-bold">10,000円</span>
                         </div>
                       </div>
                     </div>
                     <div className="mt-4 p-4 bg-[#B8EACE] bg-opacity-20 rounded-lg border-l-4 border-[#B8EACE]">
                       <div className="flex justify-between items-center">
                         <span className="text-lg font-bold">月額合計</span>
-                        <span className="text-2xl font-bold text-[#6CB2F7]">120,000円</span>
+                        <span className="text-2xl font-bold text-[#6CB2F7]">140,000円</span>
                       </div>
                     </div>
                   </div>
