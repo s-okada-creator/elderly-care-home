@@ -758,29 +758,43 @@ export default function LandingPage() {
                   </div>
                 </div>
                 
-                <div className="mt-6">
-                  <a
-                    href="https://maps.google.com/maps?q=572-0811+大阪府寝屋川市楠根南町24番22号"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 bg-[#6CB2F7] hover:bg-[#5A9FE4] text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-md hover:shadow-lg"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                <div className="mt-6 w-full max-w-2xl mx-auto">
+                  <div className="rounded-lg overflow-hidden shadow-md">
+                    <iframe
+                      src="https://maps.google.com/maps?q=大阪府寝屋川市楠根南町24番22号&t=m&z=16&output=embed&hl=ja"
+                      width="100%"
+                      height="400"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="楠根の里 所在地"
+                    ></iframe>
+                  </div>
+                  <div className="mt-4">
+                    <a
+                      href="https://maps.google.com/maps?q=大阪府寝屋川市楠根南町24番22号"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-3 bg-[#6CB2F7] hover:bg-[#5A9FE4] text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-md hover:shadow-lg"
                     >
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                      <circle cx="12" cy="10" r="3" />
-                    </svg>
-                    Googleマップで場所を確認
-                  </a>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                      </svg>
+                      Googleマップで大きく表示
+                    </a>
+                  </div>
                 </div>
                 <div className="flex flex-col items-center gap-4">
                   <div className="flex items-center gap-3">
