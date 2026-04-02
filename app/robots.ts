@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://elderly-care-home.vercel.app/sitemap.xml',
+    sitemap: 'https://kusune-no-sato.com/sitemap.xml',
   }
 }
