@@ -40,7 +40,7 @@ const heroImages = [
 export default function LandingPage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+  const [formStatus, setFormStatus] = useState<'idle' | 'success'>('idle')
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -66,39 +66,34 @@ export default function LandingPage() {
     setMobileMenuOpen(false)
   }
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setFormStatus('sending')
 
-    const formData = new FormData(e.currentTarget)
-    const data = {
-      name: formData.get('name'),
-      phone: formData.get('phone'),
-      email: formData.get('email'),
-      inquiryType: formData.get('inquiry-type'),
-      message: formData.get('message'),
-    }
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    const name = (formData.get('name') as string) || ''
+    const phone = (formData.get('phone') as string) || ''
+    const email = (formData.get('email') as string) || ''
+    const inquiryType = (formData.get('inquiry-type') as string) || ''
+    const message = (formData.get('message') as string) || ''
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
+    const subject = `【楠根の里】お問い合わせ: ${inquiryType}`
+    const body = `お名前: ${name}
+電話番号: ${phone}
+メールアドレス: ${email}
+お問い合わせ内容: ${inquiryType}
 
-      if (response.ok) {
-        setFormStatus('success')
-        // フォームをリセット
-        e.currentTarget.reset()
-      } else {
-        setFormStatus('error')
-      }
-    } catch (error) {
-      console.error('送信エラー:', error)
-      setFormStatus('error')
-    }
+メッセージ:
+${message || 'なし'}
+
+---
+このメールは楠根の里のお問い合わせフォームから作成されました。`
+
+    const mailtoUrl = `mailto:office@cosmos-welfare.net?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+
+    window.location.href = mailtoUrl
+    setFormStatus('success')
+    form.reset()
   }
 
   return (
@@ -668,19 +663,19 @@ export default function LandingPage() {
                 <AccordionItem value="item-1">
                   <AccordionTrigger className="text-lg font-medium">入居の条件はありますか？</AccordionTrigger>
                   <AccordionContent className="text-gray-600">
-                    65歳以上の方で、要介護1以上の認定を受けている方が対象です。認知症の方もご入居いただけます。詳しい条件については個別にご相談ください。
+                    65歳以上の方で、要支援2以上の認定を受けている方が対象です。認知症の方もご入居いただけます。詳しい条件については個別にご相談ください。
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-2">
                   <AccordionTrigger className="text-lg font-medium">入居費用の内訳を教えてください</AccordionTrigger>
                   <AccordionContent className="text-gray-600">
-                    月額費用には、家賃、食費、管理費、水道光熱費が含まれています。介護保険サービスの自己負担分は別途かかります。お部屋のタイプによって料金が異なりますので、詳しくはお問い合わせください。
+                    月額費用には、家賃、食費、管理費、水道光熱費が含まれています。介護保険サービスの自己負担分は別途かかります。料金はすべて同じです。詳しくはお問い合わせください。
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-3">
                   <AccordionTrigger className="text-lg font-medium">面会や外出は自由にできますか？</AccordionTrigger>
                   <AccordionContent className="text-gray-600">
-                    ご家族様の面会は9:00〜20:00の間であれば自由にしていただけます。また、ご本人様の体調に問題がなければ、外出や外泊も可能です。事前にスタッフにお知らせいただければ対応いたします。
+                    ご家族様の面会は10:00〜16:00の間であれば自由にしていただけます。また、ご本人様の体調に問題がなければ、外出や外泊も可能です。事前にスタッフにお知らせいただければ対応いたします。
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-4">
@@ -748,8 +743,9 @@ export default function LandingPage() {
                   <div className="text-gray-600 space-y-4 max-w-2xl">
                     <div>
                       <h4 className="font-semibold text-gray-800 mb-2">電車でお越しの場合</h4>
-                      <p>京阪本線 寝屋川市駅　駅前バス停33番・34番・35番乗り口から「楠根南」で下車。</p>
-                      <p>楠根南バス停から徒歩5分</p>
+                      <p>京阪本線 寝屋川市駅　東口駅前バス停</p>
+                      <p>1番乗り場　「35番」系統「楠根南町」で下車　徒歩5分</p>
+                      <p>2番乗り場　「19A」「20A」「30」系統「高宮口」で下車　徒歩10分</p>
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-800 mb-2">車でお越しの場合</h4>
@@ -923,22 +919,15 @@ export default function LandingPage() {
                 {/* ステータス表示 */}
                 {formStatus === 'success' && (
                   <div className="p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
-                    お問い合わせありがとうございます。内容を確認次第、担当者よりご連絡いたします。
+                    お使いのメールアプリが起動します。開いた画面でそのまま「送信」ボタンを押してください。メールアプリが開かない場合は、お手数ですが <a href="mailto:office@cosmos-welfare.net" className="underline font-semibold">office@cosmos-welfare.net</a> まで直接メールをお送りいただくか、お電話(072-880-1165)でお問い合わせください。
                   </div>
                 )}
-                
-                {formStatus === 'error' && (
-                  <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
-                    送信に失敗しました。もう一度お試しください。問題が続く場合は、お電話でお問い合わせください。
-                  </div>
-                )}
-                
+
                 <Button
                   type="submit"
-                  disabled={formStatus === 'sending'}
-                  className="w-full bg-[#6CB2F7] hover:bg-[#5A9FE4] text-white text-lg h-14 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-[#6CB2F7] hover:bg-[#5A9FE4] text-white text-lg h-14 rounded-xl"
                 >
-                  {formStatus === 'sending' ? '送信中...' : '送信する'}
+                  送信する
                 </Button>
               </form>
             </div>
