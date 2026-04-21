@@ -510,7 +510,7 @@ ${message || 'なし'}
                     <h3 className="text-xl font-bold mb-4 text-center">入居費用</h3>
                     <div className="flex justify-center">
                       <div className="text-center">
-                        <span className="text-3xl font-bold text-[#6CB2F7]">120,000円</span>
+                        <span className="text-3xl font-bold text-[#6CB2F7]">140,000円</span>
                         <p className="text-gray-600 mt-1">（別途補償金 150,000円）</p>
                       </div>
                     </div>
