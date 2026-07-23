@@ -986,7 +986,7 @@ ${message || 'なし'}
           </div>
           <div className="mt-8 border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-500">© 楠根の里 2025. All rights reserved.</p>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap justify-center gap-4">
               <a
                 href="/teikan.pdf"
                 target="_blank"
@@ -1001,8 +1001,17 @@ ${message || 'なし'}
                 rel="noopener noreferrer"
                 className="text-sm text-gray-500 hover:underline"
               >
-                現状報告書
+                現況報告書
               </a>
+              <Link href="/johokokai#yakuin-meibo" className="text-sm text-gray-500 hover:underline">
+                役員名簿
+              </Link>
+              <Link href="/johokokai#kujo-sodan" className="text-sm text-gray-500 hover:underline">
+                苦情相談窓口
+              </Link>
+              <Link href="/johokokai" className="text-sm text-gray-500 hover:underline">
+                情報公開
+              </Link>
             </div>
           </div>
         </div>
