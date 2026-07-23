@@ -1003,6 +1003,9 @@ ${message || 'なし'}
               >
                 現況報告書
               </a>
+              <Link href="/johokokai#kessan" className="text-sm text-gray-500 hover:underline">
+                計算書類
+              </Link>
               <Link href="/johokokai#yakuin-meibo" className="text-sm text-gray-500 hover:underline">
                 役員名簿
               </Link>

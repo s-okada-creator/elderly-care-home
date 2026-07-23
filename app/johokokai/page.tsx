@@ -73,7 +73,7 @@ export default function JohokokaiPage() {
           </section>
 
           {/* 現況報告書・計算書類 */}
-          <section>
+          <section id="kessan" className="scroll-mt-24">
             <h2 className="text-2xl font-bold mb-4 text-[#6CB2F7]">現況報告書・計算書類</h2>
             <ul className="space-y-2 mb-6">
               <li>
